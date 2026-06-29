@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VibeCoding Portfolio — AI Prompt Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D1117;
+  --surface:#161B22;
+  --surface2:#1C2333;
+  --purple:#7C3AED;
+  --purple-light:#A78BFA;
+  --cyan:#06B6D4;
+  --green:#10B981;
+  --amber:#F59E0B;
+  --text:#F0F6FF;
+  --muted:#8B949E;
+  --border:#30363D;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  min-height:100vh;
+}
+
+/* ── HERO ── */
+.hero{
+  padding:60px 24px 48px;
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(124,58,237,0.12);
+  border:1px solid rgba(124,58,237,0.3);
+  border-radius:100px;
+  padding:6px 16px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  color:var(--purple-light);
+  margin-bottom:28px;
+}
+.hero-badge span{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--purple);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,6vw,52px);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  margin-bottom:16px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:16px;
+  color:var(--muted);
+  max-width:520px;
+  margin:0 auto 36px;
+}
+.flow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+}
+.flow-step{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:4px 10px;
+  color:var(--text);
+  font-weight:500;
+}
+.flow-arrow{color:var(--purple)}
+
+/* ── LAYOUT ── */
+.container{
+  max-width:800px;
+  margin:0 auto;
+  padding:0 24px 80px;
+}
+
+/* ── SECTION ── */
+.section{
+  margin-bottom:48px;
+  padding-left:20px;
+  border-left:2px solid var(--border);
+  transition:border-color .2s;
+}
+.section:hover{border-left-color:var(--purple)}
+.section.cyan:hover{border-left-color:var(--cyan)}
+.section.green:hover{border-left-color:var(--green)}
+.section.amber:hover{border-left-color:var(--amber)}
+
+.step-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--purple);
+  margin-bottom:10px;
+}
+.section.cyan .step-label{color:var(--cyan)}
+.section.green .step-label{color:var(--green)}
+.section.amber .step-label{color:var(--amber)}
+
+.section h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:14px;
+  letter-spacing:-0.01em;
+}
+.section p{color:var(--muted);margin-bottom:12px}
+
+/* ── STEPS LIST ── */
+.steps{list-style:none;display:flex;flex-direction:column;gap:10px}
+.steps li{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:12px 14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:14px;
+  color:var(--text);
+}
+.steps li .n{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(124,58,237,0.15);
+  color:var(--purple-light);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.section.cyan .steps li .n{background:rgba(6,182,212,0.12);color:var(--cyan)}
+.section.green .steps li .n{background:rgba(16,185,129,0.12);color:var(--green)}
+.steps li code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 6px;
+  color:var(--purple-light);
+}
+.section.cyan .steps li code{color:var(--cyan)}
+
+/* ── TERMINAL / PROMPT BLOCK ── */
+.terminal{
+  background:#0A0E13;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin:16px 0;
+}
+.terminal-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 16px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.terminal-dots{display:flex;gap:6px}
+.terminal-dots span{
+  width:11px;height:11px;border-radius:50%;
+}
+.dot-r{background:#FF5F57}
+.dot-y{background:#FEBC2E}
+.dot-g{background:#28C840}
+.terminal-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+}
+.copy-btn{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(124,58,237,0.15);
+  border:1px solid rgba(124,58,237,0.3);
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:12px;font-weight:500;
+  color:var(--purple-light);
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  transition:background .15s,border-color .15s;
+}
+.copy-btn:hover{background:rgba(124,58,237,0.25);border-color:var(--purple)}
+.copy-btn.copied{color:var(--green);border-color:var(--green);background:rgba(16,185,129,0.1)}
+.terminal-body{
+  padding:20px 20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  line-height:1.8;
+  color:#CDD9E5;
+  white-space:pre;
+  overflow-x:auto;
+}
+.c-comment{color:#545D68;font-style:italic}
+.c-key{color:var(--cyan)}
+.c-val{color:#A5D6FF}
+.c-bracket{color:var(--amber)}
+.c-section{color:var(--purple-light);font-weight:500}
+.c-check{color:var(--green)}
+.cursor{
+  display:inline-block;width:8px;height:14px;
+  background:var(--cyan);
+  animation:blink 1.1s step-end infinite;
+  vertical-align:-2px;margin-left:1px;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── EXAMPLE CARD ── */
+.example-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin:16px 0;
+}
+.example-header{
+  padding:10px 16px;
+  border-bottom:1px solid var(--border);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.example-header::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.example-body{
+  padding:16px 20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;
+  line-height:1.9;
+  color:#CDD9E5;
+  white-space:pre-wrap;
+}
+
+/* ── CHECKLIST ── */
+.checklist{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin:12px 0;
+}
+.checklist li{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:13.5px;
+  color:var(--muted);
+}
+.checklist li::before{
+  content:'☐';
+  font-size:16px;
+  color:var(--purple);
+  flex-shrink:0;
+}
+.checklist li code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--cyan);
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 6px;
+}
+
+/* ── BONUS TABLE ── */
+.bonus{width:100%;border-collapse:collapse;margin:12px 0}
+.bonus th{
+  text-align:left;padding:8px 12px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+.bonus td{
+  padding:10px 12px;
+  border-bottom:1px solid rgba(48,54,61,0.5);
+  font-size:14px;color:var(--text);
+}
+.bonus tr:last-child td{border-bottom:none}
+.stars{color:var(--amber);letter-spacing:2px}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  padding:24px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  max-width:800px;
+  margin:0 auto;
+}
+footer a{color:var(--purple-light);text-decoration:none}
+
+@media(max-width:600px){
+  .terminal-body{font-size:11px;padding:14px}
+  .hero h1{font-size:28px}
+  .flow{gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-badge">
+    <span></span>
+    Uvs ITHub · MorningTalk · #VibeCoding
+  </div>
+  <h1>Өөрийн Portfolio-г<br><em>AI-тай хамт бүтээ</em></h1>
+  <p class="hero-sub">GitHub repo үүсгэ → AI prompt өг → Vercel дээр deploy хий. Terminal хэрэггүй. Framework хэрэггүй.</p>
+  <div class="flow">
+    <div class="flow-step">GitHub</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">github.dev</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">AI Prompt</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">index.html</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">Vercel</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">🌐 Live</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ── STEP 1 ── -->
+  <section class="section">
+    <div class="step-label">⚡ Алхам 1</div>
+    <h2>GitHub Repository үүсгэх</h2>
+    <ul class="steps">
+      <li><div class="n">1</div><span><a href="https://github.com" style="color:var(--purple-light)">github.com</a> руу ор → <strong>New repository</strong></span></li>
+      <li><div class="n">2</div><span>Name: <code>my-portfolio</code> · ✅ Public · ✅ Add README</span></li>
+      <li><div class="n">3</div><span><strong>Create repository</strong> дар</span></li>
+      <li><div class="n">4</div><span>Гарын дэвтэр дээр <code>.</code> (цэг) дар → github.dev нээгдэнэ ✨</span></li>
+      <li><div class="n">5</div><span>Explorer → <strong>New File</strong> → <code>index.html</code> нэрлэ</span></li>
+    </ul>
+  </section>
+
+  <!-- ── STEP 2 ── -->
+  <section class="section cyan">
+    <div class="step-label">🤖 Алхам 2</div>
+    <h2>AI Prompt — мэдээллээ бөглөөд өг</h2>
+    <p>Доорх prompt-г <strong style="color:var(--text)">бүгдийг</strong> copy хий → <code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--cyan)">[...]</code> хэсгийг бөглө → ChatGPT-д paste хий</p>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dots">
+          <span class="dot-r"></span>
+          <span class="dot-y"></span>
+          <span class="dot-g"></span>
+        </div>
+        <div class="terminal-title">portfolio-prompt.txt</div>
+        <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Prompt хуулах">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+      <div class="terminal-body" id="prompt-text"><span class="c-comment">You are an expert front-end developer. Create a complete, single-file
+portfolio website using only HTML and CSS (no frameworks, no JavaScript).
+The file must be named index.html. All CSS inside a &lt;style&gt; tag.</span>
+
+<span class="c-section">=== PERSONAL INFORMATION ===</span>
+<span class="c-key">Name:</span>       <span class="c-bracket">[YOUR FULL NAME]</span>
+<span class="c-key">Title:</span>      <span class="c-bracket">[YOUR JOB TITLE / ROLE]</span>
+            <span class="c-comment">e.g. "Software Engineer" | "CS Student" | "UI/UX Designer"</span>
+<span class="c-key">Location:</span>   <span class="c-bracket">[YOUR CITY, COUNTRY]</span>
+<span class="c-key">Email:</span>      <span class="c-bracket">[YOUR EMAIL ADDRESS]</span>
+<span class="c-key">GitHub:</span>     <span class="c-val">https://github.com/<span class="c-bracket">[YOUR-USERNAME]</span></span>
+<span class="c-key">LinkedIn:</span>   <span class="c-val">https://linkedin.com/in/<span class="c-bracket">[YOUR-USERNAME]</span></span>
+<span class="c-key">Bio:</span>        <span class="c-bracket">[2–3 sentences about yourself and what you do]</span>
+
+<span class="c-section">=== SKILLS ===</span>
+<span class="c-key">Skill 1:</span>  <span class="c-bracket">[e.g. Python — Advanced]</span>
+<span class="c-key">Skill 2:</span>  <span class="c-bracket">[e.g. HTML/CSS — Advanced]</span>
+<span class="c-key">Skill 3:</span>  <span class="c-bracket">[e.g. JavaScript — Intermediate]</span>
+<span class="c-key">Skill 4:</span>  <span class="c-bracket">[e.g. Git & GitHub — Intermediate]</span>
+<span class="c-key">Skill 5:</span>  <span class="c-bracket">[e.g. Figma — Beginner]</span>
+
+<span class="c-section">=== PROJECTS ===</span>
+<span class="c-key">Project 1:</span>
+  <span class="c-key">Title:</span>       <span class="c-bracket">[PROJECT NAME]</span>
+  <span class="c-key">Description:</span> <span class="c-bracket">[1–2 sentences — what it does]</span>
+  <span class="c-key">Tech stack:</span>  <span class="c-bracket">[e.g. HTML, CSS, JavaScript]</span>
+  <span class="c-key">GitHub URL:</span>  <span class="c-bracket">[https://github.com/... or delete this line]</span>
+  <span class="c-key">Live URL:</span>    <span class="c-bracket">[https://... or delete this line]</span>
+
+<span class="c-key">Project 2:</span> <span class="c-comment">(байхгүй бол бүтэн хэсгийг устга)</span>
+  <span class="c-key">Title:</span>       <span class="c-bracket">[PROJECT NAME]</span>
+  <span class="c-key">Description:</span> <span class="c-bracket">[1–2 sentences]</span>
+  <span class="c-key">Tech stack:</span>  <span class="c-bracket">[технологи]</span>
+
+<span class="c-section">=== DESIGN ===</span>
+<span class="c-key">Color scheme:</span> <span class="c-bracket">[Dark with purple / Light minimal / Blue & white]</span>
+<span class="c-key">Style:</span>        <span class="c-bracket">[Modern & clean / Creative / Minimalist]</span>
+
+<span class="c-section">=== SECTIONS ===</span>
+<span class="c-check">✅</span> Hero — name, title, bio, contact buttons
+<span class="c-check">✅</span> Skills — visual skill cards
+<span class="c-check">✅</span> Projects — cards with description, tech, links
+<span class="c-check">✅</span> Contact — email, GitHub, LinkedIn
+<span class="c-check">✅</span> Footer — include this exact text:
+   <span class="c-val">"Built with ❤️ at Uvs ITHub · MorningTalk · #VibeCoding"</span>
+
+<span class="c-section">=== REQUIREMENTS ===</span>
+- Single file: index.html with &lt;style&gt; embedded
+- Mobile responsive with CSS media queries
+- Smooth scroll, hover effects on cards/buttons
+- Clean semantic HTML5
+- NO JavaScript · NO external libraries · NO CDN links
+
+Output ONLY the complete index.html. No explanation, no code blocks.<span class="cursor"></span></div>
+    </div>
+  </section>
+
+  <!-- ── EXAMPLE ── -->
+  <section class="section amber">
+    <div class="step-label">📋 Жишээ бөглөлт</div>
+    <h2>Ийм байдлаар бөглөнө</h2>
+    <div class="example-card">
+      <div class="example-header">Жишээ — Пүрэв Баасанхүү</div>
+      <div class="example-body"><span style="color:#06B6D4">Name:</span>       Пүрэв Баасанхүү
+<span style="color:#06B6D4">Title:</span>      Full-Stack Developer & CS Graduate
+<span style="color:#06B6D4">Location:</span>   Ulaanbaatar, Mongolia
+<span style="color:#06B6D4">Email:</span>      purevsuren@example.com
+<span style="color:#06B6D4">GitHub:</span>     https://github.com/purevsuren-dev
+<span style="color:#06B6D4">Bio:</span>        CS graduate from MUST (2019). I build web apps
+            and love combining AI with modern dev workflows.
+
+<span style="color:#A78BFA">Skills:</span>
+  Python       — Advanced
+  JavaScript   — Intermediate
+  HTML/CSS     — Advanced
+  Git & GitHub — Advanced
+
+<span style="color:#A78BFA">Project 1:</span>
+  Title:       Personal Portfolio
+  Description: Responsive portfolio built in 1 hour using AI.
+  Tech stack:  HTML, CSS, GitHub, Vercel
+  GitHub URL:  https://github.com/purevsuren-dev/my-portfolio
+
+<span style="color:#A78BFA">Color scheme:</span> Dark background with cyan accent
+<span style="color:#A78BFA">Style:</span>        Modern & clean, developer-focused</div>
+    </div>
+  </section>
+
+  <!-- ── STEP 3 ── -->
+  <section class="section green">
+    <div class="step-label">💾 Алхам 3</div>
+    <h2>Файл хадгалах &amp; Push</h2>
+    <ul class="steps">
+      <li><div class="n">1</div><span>ChatGPT-н кодыг <strong>бүгдийг</strong> copy хий</span></li>
+      <li><div class="n">2</div><span>github.dev → <code>index.html</code> → paste → <code>Ctrl+S</code></span></li>
+      <li><div class="n">3</div><span>Source Control <code>⎇</code> → <code>+</code> → Commit message: <code>Add portfolio</code> → <strong>Commit &amp; Push</strong></span></li>
+    </ul>
+  </section>
+
+  <!-- ── STEP 4 ── -->
+  <section class="section">
+    <div class="step-label">🚀 Алхам 4</div>
+    <h2>Vercel Deploy</h2>
+    <ul class="steps">
+      <li><div class="n">1</div><span><a href="https://vercel.com" style="color:var(--purple-light)">vercel.com</a> → <strong>Sign up with GitHub</strong></span></li>
+      <li><div class="n">2</div><span><strong>Add New Project</strong> → <code>my-portfolio</code> сонго</span></li>
+      <li><div class="n">3</div><span>Framework: <code>Other</code></span></li>
+      <li><div class="n">4</div><span><strong>Deploy</strong> → 30 секунд → URL авна 🎉</span></li>
+    </ul>
+    <div style="margin-top:14px;padding:12px 16px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green)">
+      🌐 &nbsp;https://my-portfolio.vercel.app
+    </div>
+  </section>
+
+  <!-- ── CHECKLIST ── -->
+  <section class="section cyan">
+    <div class="step-label">✅ Шалгах жагсаалт</div>
+    <h2>Бүгд зөв болсон уу?</h2>
+    <ul class="checklist">
+      <li><code>github.com/таны-нэр/my-portfolio</code> нээгдэж байна</li>
+      <li><code>index.html</code> файл репозиторид харагдаж байна</li>
+      <li><code>my-portfolio.vercel.app</code> хөтчөөр нээгдэж байна</li>
+      <li>Утсан дээр нээхэд portfolio гоё харагдаж байна 📱</li>
+      <li>Нэрлэлт, мэргэжил, холбоо барих мэдээлэл зөв байна</li>
+    </ul>
+  </section>
+
+  <!-- ── BONUS ── -->
+  <section class="section amber">
+    <div class="step-label">🎯 Бонус</div>
+    <h2>Дараагийн алхмууд</h2>
+    <table class="bonus">
+      <thead>
+        <tr>
+          <th>Даалгавар</th>
+          <th>Хүнд байдал</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Гэрэл зургаа нэм</td><td class="stars">⭐</td></tr>
+        <tr><td>Hover effect сайжруул</td><td class="stars">⭐⭐</td></tr>
+        <tr><td>Custom domain холбох</td><td class="stars">⭐⭐⭐</td></tr>
+        <tr><td>Dark / Light mode нэм</td><td class="stars">⭐⭐⭐</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  Built with ❤️ at <a href="#">Uvs ITHub</a> · MorningTalk · #VibeCoding · #GitHub · #WebDev
+</footer>
+
+<script>
+function copyPrompt(btn) {
+  const raw = `You are an expert front-end developer. Create a complete, single-file
+portfolio website using only HTML and CSS (no frameworks, no JavaScript).
+The file must be named index.html. All CSS inside a <style> tag.
+
+=== PERSONAL INFORMATION ===
+Name:       [YOUR FULL NAME]
+Title:      [YOUR JOB TITLE / ROLE]
+            e.g. "Software Engineer" | "CS Student" | "UI/UX Designer"
+Location:   [YOUR CITY, COUNTRY]
+Email:      [YOUR EMAIL ADDRESS]
+GitHub:     https://github.com/[YOUR-USERNAME]
+LinkedIn:   https://linkedin.com/in/[YOUR-USERNAME]
+Bio:        [2–3 sentences about yourself and what you do]
+
+=== SKILLS ===
+Skill 1:  [e.g. Python — Advanced]
+Skill 2:  [e.g. HTML/CSS — Advanced]
+Skill 3:  [e.g. JavaScript — Intermediate]
+Skill 4:  [e.g. Git & GitHub — Intermediate]
+Skill 5:  [e.g. Figma — Beginner]
+
+=== PROJECTS ===
+Project 1:
+  Title:       [PROJECT NAME]
+  Description: [1–2 sentences — what it does]
+  Tech stack:  [e.g. HTML, CSS, JavaScript]
+  GitHub URL:  [https://github.com/... or delete this line]
+  Live URL:    [https://... or delete this line]
+
+Project 2: (байхгүй бол бүтэн хэсгийг устга)
+  Title:       [PROJECT NAME]
+  Description: [1–2 sentences]
+  Tech stack:  [технологи]
+
+=== DESIGN ===
+Color scheme: [Dark with purple / Light minimal / Blue & white]
+Style:        [Modern & clean / Creative / Minimalist]
+
+=== SECTIONS ===
+✅ Hero — name, title, bio, contact buttons
+✅ Skills — visual skill cards
+✅ Projects — cards with description, tech, links
+✅ Contact — email, GitHub, LinkedIn
+✅ Footer — include this exact text:
+   "Built with ❤️ at Uvs ITHub · MorningTalk · #VibeCoding"
+
+=== REQUIREMENTS ===
+- Single file: index.html with <style> embedded
+- Mobile responsive with CSS media queries
+- Smooth scroll, hover effects on cards/buttons
+- Clean semantic HTML5
+- NO JavaScript · NO external libraries · NO CDN links
+
+Output ONLY the complete index.html. No explanation, no code blocks.`;
+  navigator.clipboard.writeText(raw).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+    }, 2500);
+  });
+}
+</script>
+</body>
+</html>
