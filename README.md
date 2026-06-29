@@ -1,108 +1,151 @@
-# 🛠️ Практик Даалгавар — VibeCoding Сургалт
+# 🚀 VibeCoding Portfolio — README & AI Prompt Guide
 
-## Оролцогчдод зориулсан алхмуудын жагсаалт
-
----
-
-## ✅ Алхам 1 — GitHub бүртгэл (10 мин)
-
-**Хийх зүйл:**
-1. [github.com](https://github.com) руу орно
-2. "Sign up" → имэйл, нууц үг, username оруулна
-3. Username нэрлэх дүрэм: **товч, мэргэжлийн, тоогүй**
-   - ✅ Сайн: `munkh-dev`, `boldbaatar-codes`
-   - ❌ Муу: `munkh1234`, `user_99`
-4. Имэйл баталгаажуулна
-
-**Шалгах асуулт:** `github.com/таны-нэр` хаягаар ороход профайл харагдаж байна уу?
+> **Сургалтын workflow:** GitHub repo үүсгэ → README дээр "." дар → github.dev нээгдэнэ → `index.html` үүсгэ → AI prompt-г ашиглан код авна → Vercel deploy
 
 ---
 
-## ✅ Алхам 2 — Repository үүсгэх (5 мин)
+## ⚡ Step 1 — GitHub Repository Setup
 
-**Хийх зүйл:**
-1. Нэвтэрсний дараа баруун дээр "+" → "New repository"
+1. Go to [github.com](https://github.com) → **New repository**
 2. Name: `my-portfolio`
-3. Public сонгох ✓
-4. "Add a README file" чекбокс ✓
-5. "Create repository" дарна
-
-**ТРЮК:** Шинэ репозиторид орчихоод гарын дэвтэр дээр **"." (цэг)** дар → VS Code хөтчөөр нээгдэнэ!
+3. ✅ Public · ✅ Add a README file
+4. **Create repository**
+5. Press **`.`** (dot) on your keyboard → github.dev opens instantly
 
 ---
 
-## ✅ Алхам 3 — ViteJS төсөл (15 мин)
+## 🤖 Step 2 — AI Prompt (Copy → Paste to ChatGPT / Copilot)
 
-VS Code-ийн terminal дээр:
+> Copy the prompt below, fill in your `[...]` values, then paste into ChatGPT or GitHub Copilot Chat.
 
-```bash
-npm create vite@latest my-portfolio -- --template vanilla
-cd my-portfolio
-npm install
-npm run dev
+---
+
+```
+You are an expert front-end developer. Create a complete, single-file portfolio website using only HTML and CSS (no frameworks, no JavaScript required).
+
+The file must be named index.html and include all CSS inside a <style> tag.
+
+=== PERSONAL INFORMATION ===
+Name:         [YOUR FULL NAME]
+Title:        [YOUR JOB TITLE / ROLE]  
+             e.g. "Software Engineer" | "UI/UX Designer" | "CS Student"
+Location:     [YOUR CITY, COUNTRY]
+Email:        [YOUR EMAIL]
+GitHub:       https://github.com/[YOUR-USERNAME]
+LinkedIn:     https://linkedin.com/in/[YOUR-USERNAME]   (delete if not applicable)
+Bio:          [2–3 sentences about yourself and what you do]
+
+=== SKILLS ===
+(List 4–8 skills with proficiency level: Beginner / Intermediate / Advanced)
+Skill 1:  [e.g. Python — Advanced]
+Skill 2:  [e.g. HTML/CSS — Advanced]
+Skill 3:  [e.g. JavaScript — Intermediate]
+Skill 4:  [e.g. Git & GitHub — Intermediate]
+Skill 5:  [e.g. Figma — Beginner]
+
+=== PROJECTS ===
+(Add 1–3 projects. Delete rows you don't need.)
+Project 1:
+  Title:       [PROJECT NAME]
+  Description: [1–2 sentences about what it does]
+  Tech stack:  [e.g. HTML, CSS, JavaScript]
+  Live URL:    [https://... or delete this line]
+  GitHub URL:  [https://github.com/... or delete this line]
+
+Project 2:
+  Title:       [PROJECT NAME]
+  Description: [1–2 sentences about what it does]
+  Tech stack:  [e.g. Python, Flask]
+  Live URL:    [https://... or delete this line]
+  GitHub URL:  [https://github.com/... or delete this line]
+
+=== DESIGN PREFERENCES ===
+Color scheme: [e.g. Dark with purple accent / Light minimal / Blue & white]
+Style:        [e.g. Modern & clean / Creative / Corporate / Minimalist]
+Font feel:    [e.g. Technical / Friendly / Professional]
+
+=== SECTIONS TO INCLUDE ===
+✅ Hero — name, title, short bio, contact buttons
+✅ Skills — visual skill cards or progress bars
+✅ Projects — cards with description, tech stack, links
+✅ Contact — email link, GitHub, LinkedIn icons (use emoji or simple text icons)
+✅ Footer — copyright line
+
+=== TECHNICAL REQUIREMENTS ===
+- Single file: index.html with <style> embedded (no external CSS files)
+- Mobile responsive using CSS media queries
+- Smooth scroll behavior
+- Hover effects on cards and buttons
+- Clean semantic HTML5 structure
+- NO JavaScript required (pure CSS interactions only)
+- NO external libraries or CDN links
+
+Output ONLY the complete index.html file. No explanation, no markdown code blocks.
 ```
 
-Хөтчөөр `http://localhost:5173` нээхэд "Vite + Vanilla" харагдана.
+---
 
-**AI Prompt (ChatGPT эсвэл Copilot-д өг):**
+## 📋 Step 3 — Өөрийн мэдээллийг бөглөх жишээ
+
 ```
-Надад энгийн portfolio хуудас хийгээд өг.
-Дараах хэсгүүд байгаасай:
-- Header: нэр + мэргэжлийн гарчиг
-- About: 2 өгүүлбэр танилцуулга
-- Skills: 3 ур чадвар card-аар
-- Contact: имэйл линк
-CSS-ийг мөн адил файлд байгаасай. Өнгө: хар дэвсгэр, нэг accent өнгө.
+Name:         Пүрэв Баасанхүү
+Title:        Full-Stack Developer & CS Graduate
+Location:     Ulaanbaatar, Mongolia
+Email:        purevsuren@example.com
+GitHub:       https://github.com/purevsuren-dev
+Bio:          I am a Computer Science graduate from MUST University (2019).
+              I build web applications and love combining AI tools with
+              modern development workflows to ship products faster.
+
+Skills:
+  Python       — Advanced
+  JavaScript   — Intermediate
+  HTML/CSS     — Advanced
+  Git & GitHub — Advanced
+  VS Code      — Advanced
+
+Projects:
+  Project 1:
+    Title:       Personal Portfolio
+    Description: A responsive portfolio website built with HTML, CSS,
+                 and deployed via Vercel in under 1 hour.
+    Tech stack:  HTML, CSS, GitHub, Vercel
+    GitHub URL:  https://github.com/purevsuren-dev/my-portfolio
+
+Color scheme: Dark background with cyan/teal accent
+Style:        Modern & clean, developer-focused
+Font feel:    Technical but approachable
 ```
 
 ---
 
-## ✅ Алхам 4 — GitHub-руу Push (5 мин)
+## 🖥️ Step 4 — github.dev дээр файл үүсгэх
 
-```bash
-git init
-git remote add origin https://github.com/ТАНЫ-НЭР/my-portfolio.git
-git add .
-git commit -m "Portfolio эхний хувилбар"
-git push -u origin main
-```
-
-GitHub дээр файлууд харагдаж байна уу? → ✓ Амжилттай!
+1. AI-н гаргасан кодыг **бүгдийг нь** copy хийнэ
+2. github.dev дээр зүүн талын Explorer → **New File** → `index.html`
+3. Paste хийнэ → **Ctrl+S** хадгална
+4. Source Control (⎇) → `+` → Commit message: `"Add portfolio"` → **Commit & Push**
 
 ---
 
-## ✅ Алхам 5 — Vercel Deploy (5 мин)
+## 🚀 Step 5 — Vercel Deploy
 
-1. [vercel.com](https://vercel.com) → "Sign up with GitHub"
-2. "Add New Project" → `my-portfolio` сонгоно
-3. Framework: Vite (автоматаар танина)
-4. "Deploy" → 30-60 секунд хүлээнэ
-5. URL авна: `my-portfolio.vercel.app`
-
-**Туршилт:** URL-г мессенжерт явуулж, утсан дээрээ нээнэ!
+1. [vercel.com](https://vercel.com) → **Sign up with GitHub**
+2. **Add New Project** → `my-portfolio` сонгоно
+3. Framework: **Other** (HTML file тул)
+4. **Deploy** → 30 секунд → URL авна 🎉
 
 ---
 
-## 🎯 Бонус Даалгаврууд
+## ✅ Амжилтын шалгуур
 
-| Даалгавар | Хүнд байдал |
-|-----------|-------------|
-| Нэрийн хуудсан дээр зургаа нэм | ⭐ |
-| Hover effect нэм | ⭐⭐ |
-| GitHub Pages-ээр ч байршуул | ⭐⭐ |
-| Custom domain (avaialble.mn) холбох | ⭐⭐⭐ |
-| Dark/Light mode toggle нэм | ⭐⭐⭐ |
-
----
-
-## 📌 Хэрэгтэй линкүүд
-
-- GitHub: https://github.com
-- VS Code Online: https://vscode.dev
-- Vercel: https://vercel.com
-- ViteJS: https://vitejs.dev
-- ChatGPT: https://chat.openai.com
+| Алхам | Шалгах зүйл |
+|-------|-------------|
+| GitHub repo | `github.com/таны-нэр/my-portfolio` ажиллаж байна |
+| github.dev | `index.html` файл үүссэн, код харагдаж байна |
+| Vercel | `my-portfolio.vercel.app` хөтчөөр нээгдэж байна |
+| Утсан дээр | URL нээхэд portfolio харагдаж байна 📱 |
 
 ---
 
-*Uvs ITHub · MorningTalk · #VibeCoding*
+*Uvs ITHub · MorningTalk · #VibeCoding · #GitHub · #WebDev*
