@@ -62,14 +62,106 @@ iframe{width:100%;height:540px;border:none;background:#fff;display:block}
 .hint{font-size:12px;color:#484F58;text-align:center;font-family:'JetBrains Mono',monospace;margin:14px 0}
 .hint b{color:#8B949E}
 footer{margin-top:32px;padding-top:20px;border-top:1px solid #21262D;font-size:12px;color:#484F58;text-align:center}
+
+/* ── WEEK NAV ── */
+.week-nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:32px;scrollbar-width:thin}
+.week-nav::-webkit-scrollbar{height:4px}
+.week-nav::-webkit-scrollbar-thumb{background:#30363D;border-radius:4px}
+.week-tab{
+  flex-shrink:0;display:flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:100px;
+  font-size:13px;font-weight:500;
+  cursor:pointer;transition:all .15s;
+  white-space:nowrap;text-decoration:none;
+}
+.week-tab.active{
+  background:linear-gradient(135deg,#7C3AED,#5B21B6);
+  color:#fff;border:1px solid transparent;
+}
+.week-tab.locked{
+  background:#161B22;border:1px solid #21262D;
+  color:#484F58;cursor:default;
+}
+.week-tab.locked .lock-icon{opacity:.5}
+.week-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  opacity:.85;
+}
+
+/* ── WEEK SECTION HEADER ── */
+.week-header{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:8px;
+}
+.week-pill{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;font-weight:600;
+  letter-spacing:.05em;
+  background:rgba(124,58,237,.15);
+  color:#A78BFA;
+  border:1px solid rgba(124,58,237,.3);
+  border-radius:6px;
+  padding:4px 12px;
+}
+.week-header h1{margin-bottom:0}
+.week-meta{
+  display:flex;gap:16px;align-items:center;
+  font-size:12px;color:#484F58;
+  margin-bottom:28px;margin-top:8px;
+  font-family:'JetBrains Mono',monospace;
+}
+.week-meta .dot-sep{width:3px;height:3px;border-radius:50%;background:#30363D}
+.week-meta .status-live{color:#10B981;display:flex;align-items:center;gap:5px}
+.week-meta .status-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#10B981;animation:pulse 2s infinite}
+
+/* ── COMING SOON ── */
+.coming-soon{
+  border:1px dashed #30363D;border-radius:12px;
+  padding:32px 24px;text-align:center;margin-bottom:32px;
+}
+.coming-soon-icon{font-size:24px;margin-bottom:10px;opacity:.5}
+.coming-soon p{font-size:13px;color:#484F58}
+.coming-soon b{color:#8B949E}
 </style>
 </head>
 <body>
 <div class="wrap">
 
+<!-- ── WEEK NAVIGATION ── -->
+<nav class="week-nav" aria-label="Долоо хоногийн жагсаалт">
+  <a href="#week1" class="week-tab active">
+    <span class="week-num">W1</span> VibeCoding Portfolio
+  </a>
+  <span class="week-tab locked">
+    <span class="week-num">W2</span> Удахгүй
+    <svg class="lock-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  </span>
+  <span class="week-tab locked">
+    <span class="week-num">W3</span> Удахгүй
+    <svg class="lock-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  </span>
+  <span class="week-tab locked">
+    <span class="week-num">W4</span> Удахгүй
+    <svg class="lock-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  </span>
+</nav>
+
+<!-- ── WEEK 1 CONTENT ── -->
+<div id="week1">
+
 <!-- ── HEADER ── -->
 <div class="badge"><span></span>Uvs ITHub · MorningTalk · #VibeCoding</div>
+<div class="week-header">
+  <span class="week-pill">WEEK 1</span>
+</div>
 <h1>Portfolio CV <em>Prompt</em></h1>
+<div class="week-meta">
+  <span class="status-live">Идэвхтэй</span>
+  <span class="dot-sep"></span>
+  <span>2026.06.30</span>
+  <span class="dot-sep"></span>
+  <span>~65 мин</span>
+</div>
 <p class="sub">Copy → [шар] хэсгийг бөглө → ChatGPT-д paste → index.html авна</p>
 
 <!-- ── PROMPT TERMINAL ── -->
@@ -82,14 +174,35 @@ footer{margin-top:32px;padding-top:20px;border-top:1px solid #21262D;font-size:1
       Prompt хуулах
     </button>
   </div>
-  <div class="t-body"><span class="cm">⚠️  STRICT RULE: Output ONE file only — index.html
-     ALL CSS must be inside a &lt;style&gt; tag. NO separate style.css. Ever.</span>
+  <div class="t-body"><span class="rd" style="font-weight:600">🚫🚫🚫 ABSOLUTE RULE — READ THIS 3 TIMES BEFORE YOU START 🚫🚫🚫</span>
+
+<span class="cm">RULE #1: You will output EXACTLY ONE (1) file. Filename: index.html
+RULE #2: ALL CSS goes inside a single &lt;style&gt;...&lt;/style&gt; tag,
+         placed inside the &lt;head&gt; of that SAME index.html file.
+RULE #3: Do NOT create style.css. Do NOT create styles.css.
+         Do NOT create any .css file of any name, ever, under
+         any circumstance — even if it seems like "best practice."
+
+If you are about to write "style.css" or "styles.css" or output
+a second file or a second code block — STOP. That is WRONG.
+There is only ONE code block in your answer, and it starts with
+&lt;!DOCTYPE html&gt; and ends with &lt;/html&gt;. Nothing else.</span>
+
+<span class="rd" style="font-weight:600">🚫🚫🚫 END OF ABSOLUTE RULE 🚫🚫🚫</span>
 
 <span class="sc">═══ TASK ═══</span>
 You are a senior UI/UX developer. Build a <span class="gr">stunning, modern, single-page
 portfolio website</span> that looks like it was designed by a professional agency.
 Output: <span class="rd">ONE file — index.html — with ALL CSS inside &lt;style&gt; tag.</span>
 No external CSS. No JS files. No CDN. No frameworks.
+
+<span class="sc">═══ LANGUAGE & FONT ═══</span>
+<span class="rd">IMPORTANT:</span> All visible text content (headings, bio, labels, buttons,
+project descriptions, contact section) must be written in <span class="gr">Mongolian (Cyrillic)</span>.
+Use this font import inside &lt;style&gt;:
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+Apply font-family: 'Noto Sans', sans-serif; to body — it has full Cyrillic glyph support
+and renders Mongolian text cleanly without missing characters or fallback fonts.
 
 <span class="sc">═══ PERSONAL INFO ═══</span>
 <span class="ky">Name:</span>         <span class="br">[НЭРЭЭ БИЧ]</span>
@@ -142,6 +255,11 @@ No external CSS. No JS files. No CDN. No frameworks.
 <span class="gr">✅</span> Semantic HTML5: header nav main section footer
 <span class="rd">❌</span> NO style.css · NO &lt;script&gt; · NO Bootstrap · NO CDN
 
+<span class="rd" style="font-weight:600">REMINDER (final check before you respond):</span>
+<span class="cm">— Is your answer ONE file? It must be.
+— Did you put CSS in &lt;style&gt;, not in a separate style.css? Check again.
+— Are you about to show 2 code blocks (HTML + CSS)? Merge them into 1.</span>
+
 Output the complete index.html. Start &lt;!DOCTYPE html&gt; end &lt;/html&gt;.
 No explanation. No markdown. Raw HTML only.<span class="cursor"></span></div>
 </div>
@@ -169,20 +287,20 @@ No explanation. No markdown. Raw HTML only.<span class="cursor"></span></div>
   <div class="ex-body"><span style="color:#A78BFA;font-weight:500">═══ PERSONAL INFO ═══</span>
 <span style="color:#06B6D4">Name:</span>         Пүрэв Баасанхүү
 <span style="color:#06B6D4">Title:</span>        Full-Stack Developer & CS Graduate
-<span style="color:#06B6D4">Location:</span>     Uvs aimag, Ulaangom Soum, Mongolia
-<span style="color:#06B6D4">Email:</span>        purevbaasankhuu@gmail.com
-<span style="color:#06B6D4">GitHub:</span>       https://github.com/mind-loop
-<span style="color:#06B6D4">LinkedIn:</span>     https://linkedin.com/in/baasankhuu-p
-<span style="color:#06B6D4">Bio:</span>          I am a CS graduate from NUM (2019). I build web
+<span style="color:#06B6D4">Location:</span>     Ulaanbaatar, Mongolia
+<span style="color:#06B6D4">Email:</span>        purevsuren@example.com
+<span style="color:#06B6D4">GitHub:</span>       https://github.com/purevsuren-dev
+<span style="color:#06B6D4">LinkedIn:</span>     https://linkedin.com/in/purevsuren-dev
+<span style="color:#06B6D4">Bio:</span>          I am a CS graduate from MUST (2019). I build web
               applications using modern tools and love combining AI
               with development to ship products 10x faster.
 
 <span style="color:#A78BFA;font-weight:500">═══ SKILLS ═══</span>
-<span style="color:#06B6D4">Skill 1:</span>  VITEJS - GOLANG — Advanced
+<span style="color:#06B6D4">Skill 1:</span>  Python — Advanced
 <span style="color:#06B6D4">Skill 2:</span>  HTML & CSS — Advanced
 <span style="color:#06B6D4">Skill 3:</span>  JavaScript — Intermediate
 <span style="color:#06B6D4">Skill 4:</span>  Git & GitHub — Advanced
-<span style="color:#06B6D4">Skill 5:</span>  Figma — Advanced
+<span style="color:#06B6D4">Skill 5:</span>  Figma — Beginner
 
 <span style="color:#A78BFA;font-weight:500">═══ PROJECTS ═══</span>
 <span style="color:#06B6D4">Project 1:</span>
@@ -190,7 +308,7 @@ No explanation. No markdown. Raw HTML only.<span class="cursor"></span></div>
   Description:  A responsive portfolio website built in under 1 hour
                 using AI-assisted coding and deployed via Vercel.
   Tech:         HTML, CSS, GitHub Actions, Vercel
-  GitHub:       https://github.com/mind-loop/my-portfolio
+  GitHub:       https://github.com/purevsuren-dev/my-portfolio
   Live:         https://purevsuren.vercel.app
 
 <span style="color:#A78BFA;font-weight:500">═══ DESIGN ═══</span>
@@ -221,8 +339,21 @@ No explanation. No markdown. Raw HTML only.<span class="cursor"></span></div>
       Жишээ хуулах
     </button>
   </div>
-  <div class="t-body"><span class="cm">⚠️  STRICT RULE: Output ONE file only — index.html
-     ALL CSS must be inside a &lt;style&gt; tag. NO separate style.css. Ever.</span>
+  <div class="t-body"><span class="rd" style="font-weight:600">🚫🚫🚫 ABSOLUTE RULE — READ THIS 3 TIMES BEFORE YOU START 🚫🚫🚫</span>
+
+<span class="cm">RULE #1: You will output EXACTLY ONE (1) file. Filename: index.html
+RULE #2: ALL CSS goes inside a single &lt;style&gt;...&lt;/style&gt; tag,
+         placed inside the &lt;head&gt; of that SAME index.html file.
+RULE #3: Do NOT create style.css. Do NOT create styles.css.
+         Do NOT create any .css file of any name, ever, under
+         any circumstance — even if it seems like "best practice."
+
+If you are about to write "style.css" or "styles.css" or output
+a second file or a second code block — STOP. That is WRONG.
+There is only ONE code block in your answer, and it starts with
+&lt;!DOCTYPE html&gt; and ends with &lt;/html&gt;. Nothing else.</span>
+
+<span class="rd" style="font-weight:600">🚫🚫🚫 END OF ABSOLUTE RULE 🚫🚫🚫</span>
 
 <span class="sc">═══ TASK ═══</span>
 You are a senior UI/UX developer. Build a <span class="gr">stunning, modern, single-page
@@ -230,13 +361,19 @@ portfolio website</span> that looks like it was designed by a professional agenc
 Output: <span class="rd">ONE file — index.html — with ALL CSS inside &lt;style&gt; tag.</span>
 No external CSS. No JS files. No CDN. No frameworks.
 
+<span class="sc">═══ LANGUAGE & FONT ═══</span>
+<span class="rd">IMPORTANT:</span> All visible text content must be written in <span class="gr">Mongolian (Cyrillic)</span>.
+Use this font import inside &lt;style&gt;:
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+Apply font-family: 'Noto Sans', sans-serif; to body.
+
 <span class="sc">═══ PERSONAL INFO ═══</span>
-<span style="color:#06B6D4">Name:</span>         Пүрэв Баасанхүү
-<span style="color:#06B6D4">Title:</span>        Full-Stack Developer & CS Graduate
-<span style="color:#06B6D4">Location:</span>     Uvs Aimag, Ulaangom Soum, Mongolia
-<span style="color:#06B6D4">Email:</span>        purevbaasankhuu@gmail.com
-<span style="color:#06B6D4">GitHub:</span>       https://github.com/mind-loop
-<span style="color:#06B6D4">LinkedIn:</span>     https://linkedin.com/in/baasankhuu-p
+<span class="ky">Name:</span>         <span class="gr">Пүрэв Баасанхүү</span>
+<span class="ky">Title:</span>        <span class="gr">Full-Stack Developer & CS Graduate</span>
+<span class="ky">Location:</span>     <span class="gr">Ulaanbaatar, Mongolia</span>
+<span class="ky">Email:</span>        <span class="gr">purevsuren@example.com</span>
+<span class="ky">GitHub:</span>       <span class="gr">https://github.com/purevsuren-dev</span>
+<span class="ky">LinkedIn:</span>     <span class="gr">https://linkedin.com/in/purevsuren-dev</span>
 <span class="ky">Bio:</span>          <span class="gr">I am a CS graduate from MUST (2019). I build web applications
               using modern tools and love combining AI with development
               workflows to ship products faster and smarter.</span>
@@ -283,6 +420,11 @@ No external CSS. No JS files. No CDN. No frameworks.
 <span class="gr">✅</span> Mobile responsive (375px+) · Google Fonts via @import
 <span class="rd">❌</span> NO style.css · NO &lt;script&gt; · NO Bootstrap · NO CDN
 
+<span class="rd" style="font-weight:600">REMINDER (final check before you respond):</span>
+<span class="cm">— Is your answer ONE file? It must be.
+— Did you put CSS in &lt;style&gt;, not in a separate style.css? Check again.
+— Are you about to show 2 code blocks (HTML + CSS)? Merge them into 1.</span>
+
 Output the complete index.html. Start &lt;!DOCTYPE html&gt; end &lt;/html&gt;.
 No explanation. No markdown. Raw HTML only.</div>
 </div>
@@ -307,22 +449,57 @@ No explanation. No markdown. Raw HTML only.</div>
   <iframe id="previewFrame" title="Portfolio жишээ"></iframe>
 </div>
 
+<div style="display:flex;align-items:center;gap:10px;margin:10px 0 0;padding:10px 14px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:8px;font-size:12px;color:#F59E0B">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <span>Энэ жишээ Англи хэлээр харагдаж байгаа ч <b style="color:#F0F6FF">prompt-д Монгол хэл + Noto Sans фонт</b> заасан тул ChatGPT-н гаргах бодит portfolio Монгол хэлээр, цэвэр Кирилл бичигтэй гарна.</span>
+</div>
+
 <div class="hint" style="margin-bottom:32px">
   Дээрх нь prompt-г ChatGPT-д өгснөөр гарах portfolio-н жишээ харагдал
+</div>
+
+</div><!-- /week1 -->
+
+<!-- ── COMING SOON ── -->
+<div class="coming-soon">
+  <div class="coming-soon-icon">🔒</div>
+  <p><b>Week 2, 3, 4...</b> удахгүй нэмэгдэнэ</p>
+  <p style="margin-top:4px">Шинэ сэдэв бүр энд жагсаалтад орох болно</p>
 </div>
 
 <footer>Uvs ITHub · MorningTalk · #VibeCoding · #GitHub · #WebDev</footer>
 </div>
 
 <script>
-const PROMPT = `⚠️  STRICT RULE: Output ONE file only — index.html
-     ALL CSS must be inside a <style> tag. NO separate style.css. Ever.
+const PROMPT = `🚫🚫🚫 ABSOLUTE RULE — READ THIS 3 TIMES BEFORE YOU START 🚫🚫🚫
+
+RULE #1: You will output EXACTLY ONE (1) file. Filename: index.html
+RULE #2: ALL CSS goes inside a single <style>...</style> tag,
+         placed inside the <head> of that SAME index.html file.
+RULE #3: Do NOT create style.css. Do NOT create styles.css.
+         Do NOT create any .css file of any name, ever, under
+         any circumstance — even if it seems like "best practice."
+
+If you are about to write "style.css" or "styles.css" or output
+a second file or a second code block — STOP. That is WRONG.
+There is only ONE code block in your answer, and it starts with
+<!DOCTYPE html> and ends with </html>. Nothing else.
+
+🚫🚫🚫 END OF ABSOLUTE RULE 🚫🚫🚫
 
 ═══ TASK ═══
 You are a senior UI/UX developer. Build a stunning, modern, single-page
 portfolio website that looks like it was designed by a professional agency.
 Output: ONE file — index.html — with ALL CSS inside <style> tag.
 No external CSS. No JS files. No CDN. No frameworks.
+
+═══ LANGUAGE & FONT ═══
+IMPORTANT: All visible text content (headings, bio, labels, buttons,
+project descriptions, contact section) must be written in Mongolian (Cyrillic).
+Use this font import inside <style>:
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+Apply font-family: 'Noto Sans', sans-serif; to body — it has full Cyrillic glyph
+support and renders Mongolian text cleanly without missing characters or fallback fonts.
 
 ═══ PERSONAL INFO ═══
 Name:         [НЭРЭЭ БИЧ]
@@ -375,17 +552,41 @@ Style:  [Modern agency / Minimalist / Bold creative / Corporate clean]
 ✅ Semantic HTML5: header nav main section footer
 ❌ NO style.css · NO <script> · NO Bootstrap · NO CDN
 
+REMINDER (final check before you respond):
+— Is your answer ONE file? It must be.
+— Did you put CSS in <style>, not in a separate style.css? Check again.
+— Are you about to show 2 code blocks (HTML + CSS)? Merge them into 1.
+
 Output the complete index.html. Start <!DOCTYPE html> end </html>.
 No explanation. No markdown. Raw HTML only.`;
 
-const PROMPT_EXAMPLE = `⚠️  STRICT RULE: Output ONE file only — index.html
-     ALL CSS must be inside a <style> tag. NO separate style.css. Ever.
+const PROMPT_EXAMPLE = `🚫🚫🚫 ABSOLUTE RULE — READ THIS 3 TIMES BEFORE YOU START 🚫🚫🚫
+
+RULE #1: You will output EXACTLY ONE (1) file. Filename: index.html
+RULE #2: ALL CSS goes inside a single <style>...</style> tag,
+         placed inside the <head> of that SAME index.html file.
+RULE #3: Do NOT create style.css. Do NOT create styles.css.
+         Do NOT create any .css file of any name, ever, under
+         any circumstance — even if it seems like "best practice."
+
+If you are about to write "style.css" or "styles.css" or output
+a second file or a second code block — STOP. That is WRONG.
+There is only ONE code block in your answer, and it starts with
+<!DOCTYPE html> and ends with </html>. Nothing else.
+
+🚫🚫🚫 END OF ABSOLUTE RULE 🚫🚫🚫
 
 ═══ TASK ═══
 You are a senior UI/UX developer. Build a stunning, modern, single-page
 portfolio website that looks like it was designed by a professional agency.
 Output: ONE file — index.html — with ALL CSS inside <style> tag.
 No external CSS. No JS files. No CDN. No frameworks.
+
+═══ LANGUAGE & FONT ═══
+IMPORTANT: All visible text content must be written in Mongolian (Cyrillic).
+Use this font import inside <style>:
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+Apply font-family: 'Noto Sans', sans-serif; to body.
 
 ═══ PERSONAL INFO ═══
 Name:         Пүрэв Баасанхүү
@@ -441,6 +642,11 @@ Style:  Modern agency
 ✅ Mobile responsive (375px+) · Google Fonts via @import
 ✅ Semantic HTML5: header nav main section footer
 ❌ NO style.css · NO <script> · NO Bootstrap · NO CDN
+
+REMINDER (final check before you respond):
+— Is your answer ONE file? It must be.
+— Did you put CSS in <style>, not in a separate style.css? Check again.
+— Are you about to show 2 code blocks (HTML + CSS)? Merge them into 1.
 
 Output the complete index.html. Start <!DOCTYPE html> end </html>.
 No explanation. No markdown. Raw HTML only.`;
