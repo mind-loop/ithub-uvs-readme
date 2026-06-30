@@ -162,7 +162,21 @@ footer{margin-top:32px;padding-top:20px;border-top:1px solid #21262D;font-size:1
   <span class="dot-sep"></span>
   <span>~65 мин</span>
 </div>
-<p class="sub">Copy → [шар] хэсгийг бөглө → ChatGPT-д paste → index.html авна</p>
+<p class="sub">Доорх товч дарж текст хуулаад, өөрийн мэдээллээ оруулсны дараа ChatGPT-д буулгахад л таны вэбсайт бэлэн болно</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+  <div style="display:flex;align-items:center;gap:6px;background:#161B22;border:1px solid #30363D;border-radius:100px;padding:5px 14px;font-size:12px;color:#8B949E">
+    <span style="background:rgba(124,58,237,.2);color:#A78BFA;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600">1</span>
+    "Prompt хуулах" товч дар
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;background:#161B22;border:1px solid #30363D;border-radius:100px;padding:5px 14px;font-size:12px;color:#8B949E">
+    <span style="background:rgba(124,58,237,.2);color:#A78BFA;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600">2</span>
+    ChatGPT-руу очиж paste хий
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;background:#161B22;border:1px solid #30363D;border-radius:100px;padding:5px 14px;font-size:12px;color:#8B949E">
+    <span style="background:rgba(124,58,237,.2);color:#A78BFA;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600">3</span>
+    [шар] хэсгийг өөрийнхөөрөө соль
+  </div>
+</div>
 
 <!-- ── PROMPT TERMINAL ── -->
 <div class="terminal">
@@ -264,9 +278,17 @@ Output the complete index.html. Start &lt;!DOCTYPE html&gt; end &lt;/html&gt;.
 No explanation. No markdown. Raw HTML only.<span class="cursor"></span></div>
 </div>
 
-<div class="warn">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  ChatGPT style.css үүсгэвэл дахин хэл: <b style="color:#F0F6FF">"Put ALL CSS inside &lt;style&gt; in index.html. No separate files."</b>
+<div class="warn" style="flex-direction:column;align-items:flex-start;gap:8px">
+  <div style="display:flex;align-items:center;gap:8px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <b style="color:#F0F6FF">Анхаар:</b> ChatGPT эсвэл Gemini заримдаа дизайныг (CSS) тусдаа файл болгож гаргадаг
+  </div>
+  <p style="margin:0;line-height:1.6">
+    Хэрэв танд <code style="background:#0D1117;padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#FF7B72">style.css</code> гэсэн хоёр дахь файл гарч ирвэл — энэ буруу. Зөвхөн нэг файл (<code style="background:#0D1117;padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#10B981">index.html</code>) хэрэгтэй. AI-д дараах англи өгүүлбэрийг хуулж дахин бичээрэй:
+  </p>
+  <div style="background:#0D1117;border:1px solid #30363D;border-radius:6px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#A5D6FF;width:100%">
+    "Put ALL CSS inside the &lt;style&gt; tag in index.html. Don't create style.css. Give me ONE file only."
+  </div>
 </div>
 
 <!-- ── EXAMPLE 1: Filled Prompt ── -->
